@@ -1,0 +1,349 @@
+@import url(./fonts.scss);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1950px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+$white: #fff;
+$white-strong: #f2f7ff;
+$bg: #98c0ff;
+$black: #000;
+$dark: #323232;
+$dark-strong: #1c1b1f;
+$gray: #49454f;
+$lightblue: #d0dcff;
+$blue: #e7e0ec;
+$blue-lighter: #e2edff;
+$lightpurple: #c4bfff;
+$red-dark: #cf1b1b;
+$purple: #6750a4;
+
+body {
+  background: $bg;
+}
+
+.cards__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: clamp(25rem, 22.546rem + 12.27vw, 37.5rem);
+  height: 800px;
+  border-radius: 10px;
+  background: url(../assets/images/card-bg.png);
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  &__header {
+    padding: 31px 20px;
+    background: $dark;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+
+    &-img {
+      width: clamp(3.125rem, 2.88rem + 1.23vw, 4.375rem);
+    }
+
+    &-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      &-title {
+        font-weight: 500;
+        font-size: clamp(1.125rem, 0.978rem + 0.74vw, 1.875rem);
+        line-height: 78%;
+        color: $white;
+      }
+
+      &-status {
+        font-weight: 300;
+        font-size: clamp(0.875rem, 0.777rem + 0.49vw, 1.375rem);
+        line-height: 129%;
+        color: $white;
+      }
+    }
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    padding: 10px;
+    overflow-y: auto;
+
+    &-nope {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &-img {
+        width: 30%;
+        height: 30%;
+      }
+
+      &-text {
+        font-size: clamp(1.25rem, 1.127rem + 0.61vw, 1.875rem);
+      }
+    }
+  }
+
+  &__footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $dark;
+    border-radius: 0 0 10px 10px;
+
+    &-input {
+      width: 80%;
+      font-weight: 400;
+      font-size: clamp(0.875rem, 0.801rem + 0.37vw, 1.25rem);
+      color: $white;
+      border: none;
+      outline: none;
+      background: transparent;
+
+      &::placeholder {
+        color: $white;
+      }
+    }
+
+    &-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    &-img {
+      width: clamp(1.5rem, 1.402rem + 0.49vw, 2rem);
+      height: clamp(1.5rem, 1.402rem + 0.49vw, 2rem);
+    }
+  }
+}
+
+.message {
+  width: 100%;
+
+  &__wrap {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    &.sent {
+      justify-content: flex-end;
+    }
+
+    &.received {
+      justify-content: flex-start;
+    }
+  }
+
+  &__date {
+    &.sent {
+      order: -1;
+    }
+
+    &.received {
+      order: 0;
+    }
+
+    &-span {
+      font-weight: 400;
+      font-size: clamp(0.875rem, 0.801rem + 0.37vw, 1.25rem);
+      color: $dark;
+    }
+  }
+
+  &__text,
+  &__pic-comment {
+    max-width: 262px;
+    font-weight: 400;
+    font-size: clamp(1rem, 0.902rem + 0.49vw, 1.5rem);
+    color: $black;
+    padding: 5px 10px;
+    word-wrap: break-word;
+
+    &.sent,
+    &__pic-comment.sent {
+      order: 0;
+      border-radius: 15px 15px 0 15px;
+      background: $lightblue;
+    }
+
+    &.received,
+    &__pic-comment.received {
+      order: 1;
+      border-radius: 15px 15px 15px 0;
+      background: $lightpurple;
+    }
+  }
+
+  &__pic {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &.sent {
+      align-items: flex-end;
+    }
+
+    &.received {
+      align-items: flex-start;
+    }
+
+    &-img {
+      width: 100%;
+      max-width: 275px;
+      max-height: 275px;
+
+      &.sent {
+        border-radius: 15px 15px 0 15px;
+      }
+
+      &.received {
+        border-radius: 15px 15px 15px 0;
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: $white-strong;
+    border-radius: 28px;
+
+    &-title {
+      font-weight: 400;
+      font-size: clamp(1.5rem, 1.451rem + 0.25vw, 1.75rem);
+      line-height: 133%;
+      color: $dark-strong;
+    }
+
+    &-label {
+      position: relative;
+
+      &-input {
+        width: 100%;
+        font-weight: 400;
+        font-size: clamp(1rem, 0.951rem + 0.25vw, 1.25rem);
+        line-height: 150%;
+        letter-spacing: 0.03em;
+        color: $gray;
+        padding: 23px 16px 8px;
+        border-radius: 4px 4px 0 0;
+        background: $blue-lighter;
+        border: none;
+        border-bottom: 1px solid $black;
+        cursor: pointer;
+
+        &:focus ~ span {
+          transform: translateY(-5px);
+        }
+
+        &:focus::placeholder {
+          color: transparent;
+        }
+      }
+
+      &-span {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-weight: 400;
+        font-size: clamp(0.75rem, 0.725rem + 0.12vw, 0.875rem);
+        line-height: 133%;
+        letter-spacing: 0.03em;
+        color: $black;
+        transition: 0.3s;
+      }
+    }
+
+    &-btns {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+
+      &-btn {
+        padding: 10px 12px;
+        border: none;
+        background: transparent;
+        font-weight: 500;
+        font-size: clamp(0.875rem, 0.826rem + 0.25vw, 1.125rem);
+        line-height: 143%;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &.red {
+          color: $red-dark;
+          transition: 0.3s;
+
+          &:hover {
+            background: $lightblue;
+          }
+        }
+
+        &.purple {
+          color: $purple;
+          transition: 0.3s;
+
+          &:hover {
+            background: $lightblue;
+          }
+        }
+      }
+    }
+  }
+}

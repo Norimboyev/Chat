@@ -1,0 +1,9 @@
+$Roboto: ("Light", 300), ("Regular", 400), ("Medium", 500);
+
+@each $name, $weight in $Roboto {
+  @font-face {
+    font-family: "Roboto";
+    src: url(../assets/fonts/Roboto/Roboto-#{$name}.ttf) format("truetype");
+    font-weight: $weight;
+  }
+}
